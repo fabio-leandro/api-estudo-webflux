@@ -4,21 +4,25 @@ Estudo  Aplicação Reativa com Spring WebFlux
 <h3>Mentoria: Digital Innovation One</h3>
 <h3>Mentora: https://github.com/Kamilahsantos</h3>
 
-<h6>Ferramentas:</h6>
-Spring Initializr
-Java 11
-Maven
-Spring WebFlux
-Spring Data Reactive Mongo
-Postman
-Junit
+<h5>Ferramentas:</h5>
+<ul>
+  <li>Spring Initializr</li>
+  <li>Java 11</li>
+  <li>Maven</li>
+  <li>Spring WebFlux</li>
+  <li>Spring Data Reactive Mongo</li>
+  <li>Postman</li>
+  <li>Junit</li>
+</ul>
 
-<h6>Objetivos:<h6>
-<p>Realizar o CRUD (Save, findAll, FindById, UpdadeById, DeleteByID)</p>
-<p>Adcionar Exception por Herói não encontrado</p>
-<p>Realizar testes unitários</p>
+<h5>Objetivos:<h5>
+  <ul>
+    <li>Realizar o CRUD (Save, findAll, FindById, UpdadeById, DeleteByID)</li>
+    <li>Adcionar Exception por Herói não encontrado</li>
+    <li>Realizar testes unitários</li>
+  </ul>
 
-<h6>Status:<h6>
+<h5>Status:<h5>
 Em desenvolvimento.
 
 
