@@ -1,8 +1,8 @@
 # API de Gestão de Heróis
 Estudo  Aplicação Reativa com Spring WebFlux
 
-Mentoria: Digital Innovation One
-Mentora: https://github.com/Kamilahsantos
+<h3>Mentoria: Digital Innovation One</h3>
+<h3>Mentora: https://github.com/Kamilahsantos</h3>
 
 Ferramentas:
 Spring Initializr
