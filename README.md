@@ -11,6 +11,7 @@
   <li>Maven</li>
   <li>Spring WebFlux</li>
   <li>Spring Data Reactive Mongo</li>
+  <li>MongoDb</li>
   <li>Postman</li>
   <li>Junit</li>
 </ul>
