@@ -13,6 +13,7 @@
   <li>Spring Data Reactive Mongo</li>
   <li>MongoDb</li>
   <li>Postman</li>
+  <li>Swagger</li>
   <li>Junit</li>
 </ul>
 
