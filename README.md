@@ -23,9 +23,3 @@
     <li>Adcionar Exception por Herói não encontrado</li>
     <li>Realizar testes unitários</li>
   </ul>
-
-<h5>Status:<h5>
-Em desenvolvimento.
-
-
-
