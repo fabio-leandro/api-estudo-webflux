@@ -18,9 +18,4 @@ public class Hero {
     private String universe;
     private int films;
 
-    public Hero(String id){
-        this.id = "Hero not found for Id -> " + id;
-        setName("Hero not found for Id -> " + id);
-        setUniverse("Hero not found for Id -> " + id);
-    }
 }

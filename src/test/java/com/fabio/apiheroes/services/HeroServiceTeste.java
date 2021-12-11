@@ -4,24 +4,18 @@ import com.fabio.apiheroes.builders.HeroBuilder;
 import com.fabio.apiheroes.entities.Hero;
 import com.fabio.apiheroes.exceptions.HeroNotFoundException;
 import com.fabio.apiheroes.repositories.HeroRepository;
-import com.sun.jdi.VoidValue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.stubbing.OngoingStubbing;
-import org.mockito.stubbing.VoidAnswer1;
-import org.reactivestreams.Publisher;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-
 
 @ExtendWith(SpringExtension.class)
 public class HeroServiceTeste {
@@ -104,6 +98,50 @@ public class HeroServiceTeste {
 
         //then
         Mono<Hero> heroMono = heroService.findById(NOVO_ID)
+                .switchIfEmpty(Mono.error(() -> new HeroNotFoundException(NOVO_ID)));
+
+        StepVerifier.create(heroMono)
+                .expectErrorMatches( throwable -> throwable instanceof HeroNotFoundException)
+                .verify();
+
+    }
+
+    @Test
+    void ShouldUpdateHeroWhenCalledThis() throws HeroNotFoundException {
+
+        //given
+        Hero hero = HeroBuilder.builder().build().toHero();
+
+        //when
+        Mockito.when(heroRepository.findById(hero.getId())).thenReturn(Mono.just(hero));
+        Mockito.when(heroRepository.save(hero)).thenReturn(Mono.just(hero));
+
+        //then
+        Mono<Hero> heroMono = heroService.updateById(hero,hero.getId());
+
+        StepVerifier.create(heroMono)
+                .consumeNextWith(h -> {
+                    Assertions.assertEquals(hero.getId(), h.getId());
+                    Assertions.assertEquals(hero.getName(), h.getName());
+                    Assertions.assertEquals(hero.getUniverse(), h.getUniverse());
+                    Assertions.assertEquals(hero.getFilms(), h.getFilms());
+
+                }).verifyComplete();
+
+    }
+
+    @Test
+    void BeforeUpdateShouldThrowHeroNotFoundWhenMonoIsEmpty(){
+
+        //given
+        Hero hero = HeroBuilder.builder().build().toHero();
+
+        //when
+        Mockito.when(heroRepository.findById(NOVO_ID)).thenReturn(Mono.empty());
+        Mockito.when(heroRepository.save(hero)).thenReturn(Mono.empty());
+
+        //then
+        Mono<Hero> heroMono = heroService.save(hero)
                 .switchIfEmpty(Mono.error(() -> new HeroNotFoundException(NOVO_ID)));
 
         StepVerifier.create(heroMono)
